@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="list-group-item">
-            <a href="{{ url('/') }}" class="menu-address-book">
+            <a href="{{ url('/contact') }}" class="menu-address-book">
                 <i class="fa fa-address-book" style="color:#b074cc;"></i>
                 Contact
             </a>

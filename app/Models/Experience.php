@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
   protected $fillable = [
-  'experiences',
+  'experience',
   'user_id'
   ];
   // Table Name

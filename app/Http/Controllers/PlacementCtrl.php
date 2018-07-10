@@ -23,14 +23,17 @@ class PlacementCtrl extends Controller
     {
       $user = Auth::user($id = null);
 
-    $basics =Placement::where('user_id', '=', Auth::user($id) )->first();
-      if ($basics =! null) {
-         $text =Placement::All();
-      }
-      else {
-     $text = 'Placement ...';
-   }
+      $basics =Placement::where('user_id', '=', Auth::user()->id)->first();
+        if ($basics == null ) {
+          $z = "Your placement ...";
+        }
 
+        else {
+            $ok = Placement::All();
+            foreach ($ok as $key => $t) {
+            $z = $t->placement;
+            }
+        }
       $show = false;
       if ($id != null){
           $friend = User::find($id);
@@ -83,7 +86,8 @@ class PlacementCtrl extends Controller
                           DB::table('placements')
                               ->where('user_id','=', $decrypt_id)
                                 ->update([
-                                  'placement' => $about = Purifier::clean($request->input('placement')),
+                                  //'placement' => $about = Purifier::clean($request->input('placement')),
+                                  'placement' => $about = $request->input('placement'),
 
                                 ]);
                                 return back()->with('success','Updated successfully!');

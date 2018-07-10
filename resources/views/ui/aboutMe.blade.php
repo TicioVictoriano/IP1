@@ -15,14 +15,12 @@
                 </div>
 
                     <div class="chat">
-                      <?php foreach ($text as $key => $getOne) {
-                       $p= $getOne->aboutme;
-                      }?>
+                      
 
                       {!! Form::open(['action' => 'AboutMeCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'onsubmit'=> 'ShowLoading()']) !!}
                       {{ csrf_field() }}
 
-                           {{Form::textarea('aboutme',$p, ['id' => 'summernote','rows' => '8', 'class' => 'form-control', 'required', ])}}
+                           {{Form::textarea('aboutme',$z, ['id' => 'summernote','rows' => '8', 'class' => 'form-control', 'required', ])}}
                      <div class="col-md-6 col-xs-6">
                          <div class="text-right mrg-top-5">
                              {{ Form::hidden('uref', Crypt::encrypt(auth()->user()->id)) }}

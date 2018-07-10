@@ -14,8 +14,11 @@ class CreateExperiencesTable extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('id');
+          $table->text('experience');
+          $table->integer('user_id')->unsigned();
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+          $table->timestamps();
         });
     }
 

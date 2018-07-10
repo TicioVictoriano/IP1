@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use View;
-use App\Experience;
+use App\Models\Experience;
 use Purifier;
 use \Crypt;
 
@@ -21,15 +22,17 @@ class ExperienceCtrl extends Controller
      */
     public function index()
     {
-      $user = Auth::user($id = null);
-
-    $basics =Experience::where('user_id', '=', Auth::user($id) )->first();
-      if ($basics =! null) {
-         $text =Experience::All();
+    $user = Auth::user($id = null);
+    $basics =Experience::where('user_id', '=', Auth::user()->id)->first();
+      if ($basics == null ) {
+      $z = "Tell us about your experience";
       }
       else {
-     $text = 'Experience ...';
-   }
+      $ok = Experience::All();
+      foreach ($ok as $key => $t) {
+      $z = $t->experience;
+      }
+      }
 
       $show = false;
       if ($id != null){
@@ -39,7 +42,7 @@ class ExperienceCtrl extends Controller
           }
       }
 
-      return view('ui.experience', compact('user', 'show', 'id', 'text'));
+      return view('ui.experience', compact('user', 'show', 'id', 'z'));
     }
 
     /**
@@ -83,7 +86,7 @@ class ExperienceCtrl extends Controller
                                 DB::table('experiences')
                                     ->where('user_id','=', $decrypt_id)
                                       ->update([
-                                        'experience' => $about = Purifier::clean($request->input('experience')),
+                                        'experience' => $about = $request->input('experience'),
 
                                       ]);
                                       return back()->with('success','Updated successfully!');

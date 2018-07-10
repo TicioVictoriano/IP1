@@ -26,13 +26,17 @@ class AboutMeCtrl extends Controller
 
        $user = Auth::user($id = null);
 
-       $basics =AboutMe::where('user_id', '=', Auth::user($id) )->first();
-       if ($basics =! null) {
-          $text =AboutMe::All();
-       }
-       else {
-      $text = 'Tell about yourself here ...';
-       }
+       $basics =AboutMe::where('user_id', '=', Auth::user()->id)->first();
+         if ($basics == null ) {
+           $z = "Tell us about yourself here ...";
+         }
+
+         else {
+             $ok = AboutMe::All();
+             foreach ($ok as $key => $t) {
+             $z = $t->aboutme;
+             }
+         }
 
        $show = false;
        if ($id != null){
@@ -42,7 +46,7 @@ class AboutMeCtrl extends Controller
            }
        }
 
-       return view('ui.aboutMe', compact('user', 'show', 'id', 'text'));
+       return view('ui.aboutMe', compact('user', 'show', 'id', 'z'));
      }
 
 
@@ -87,7 +91,9 @@ class AboutMeCtrl extends Controller
                     DB::table('about_me')
                         ->where('user_id','=', $decrypt_id)
                           ->update([
-                            'aboutme' => $about = Purifier::clean($request->input('aboutme')),
+                            //'aboutme' => $about = Purifier::clean($request->input('aboutme')),
+                            'aboutme' => $about = $request->input('aboutme'),
+
 
                           ]);
                           return back()->with('success','Updated successfully!');

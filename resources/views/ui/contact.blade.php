@@ -11,16 +11,18 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-building"></i> Experience
+                    <i class="fa fa-address-book" style="color:#b074cc;"></i> Contact
                 </div>
 
                     <div class="chat">
 
-                    
-                      {!! Form::open(['action' => 'ExperienceCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'onsubmit'=> 'ShowLoading()']) !!}
+                      <?php foreach ($text as $key => $getOne) {
+                       $u= $getOne->mycontact;
+                      }?>
+                      {!! Form::open(['action' => 'MyContactCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'onsubmit'=> 'ShowLoading()']) !!}
                       {{ csrf_field() }}
 
-                           {{Form::textarea('experience',$z, ['id' => 'summernote','rows' => '8', 'class' => 'form-control', 'required', ])}}
+                           {{Form::textarea('placement',$u, ['id' => 'summernote','rows' => '8', 'class' => 'form-control', 'required', ])}}
                      <div class="col-md-6 col-xs-6">
                          <div class="text-right mrg-top-5">
                              {{ Form::hidden('uref', Crypt::encrypt(auth()->user()->id)) }}
