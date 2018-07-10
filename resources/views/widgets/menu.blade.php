@@ -7,19 +7,19 @@
             </a>
         </li>
         <li class="list-group-item">
-            <a href="{{ url('/') }}" class="menu-user">
+            <a href="{{ url('/about-me') }}" class="menu-user">
                 <i class="fa fa-user" style="color:pink;"></i>
                 About me
             </a>
         </li>
         <li class="list-group-item">
-            <a href="{{ url('/') }}" class="menu-building">
+            <a href="{{ url('/placement') }}" class="menu-building">
                 <i class="fa fa-building"></i>
                 Placement
             </a>
         </li>
         <li class="list-group-item">
-            <a href="{{ url('/') }}" class="menu-lightbulb-o">
+            <a href="{{ url('/experience') }}" class="menu-lightbulb-o">
                 <i class="fa fa-lightbulb-o" style="color:yellow;"></i>
                 Experience
             </a>

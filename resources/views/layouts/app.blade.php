@@ -12,13 +12,18 @@
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link href="{{asset('js/summernote/dist/summernote.css')}}" rel="stylesheet">
+      <script type="text/javascript" src="{{ asset('ui/processing.js') }}"></script>
+  		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/pace-master/themes/white/pace-theme-flash.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/fancybox/dist/jquery.fancybox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/bootstrap/css/bootstrap-theme.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/around.css') }}" rel="stylesheet">
 
@@ -102,7 +107,7 @@
             </div>
         </div>
     </nav>
-
+@include('inc.messages')
     <div class="main-content">
         @yield('content')
     </div>
@@ -143,5 +148,31 @@
 
     @endif
 </script>
+<script src="{{asset('js/summernote/dist/summernote.min.js')}}"></script>
+
+<script>
+      $('#summernote').summernote({
+        placeholder: '',
+        tabsize: 10,
+        height:250,
+        toolbar: [
+  // [groupName, [list of button]]
+  ['style', ['bold', 'italic', 'underline', 'clear']],
+  ['font', ['strikethrough', 'superscript', 'subscript']],
+  ['fontsize', ['fontsize']],
+  ['color', ['color']],
+  ['link', ['link']],
+  ['picture', ['picture']],
+  ['table', ['table']],
+  ['fullscreen', ['fullscreen']],
+  ['para', ['ul', 'ol', 'paragraph']],
+  ['height', ['height']],
+  ['video', ['video']],
+  ['codeview', ['codeview']],
+],
+  height: 400,
+      });
+</script>
+
 </body>
 </html>
