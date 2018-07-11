@@ -19,33 +19,33 @@
 </head>
 <body>
 
-{{-- <div class="banner">
+<div class="banner">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                Discover your surroundings. Share your hobbies. Meet new people with Around.kim!
+                Your journey to a brilliant career starts here.
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 
 <div class="container">
     <div class="row">
-        {{-- <div class="col-md-6">
+        <div class="col-md-6">
             <a href="{{ url('/') }}" class="logo">
-                <img src="{{ asset('images/guest_logo.png') }}" alt="" />
+                <img src="{{ asset('images/logo.png') }}" alt="" />
             </a>
-        </div> --}}
+        </div>
 
-        {{-- <div class="col-md-6"> --}}
+        <div class="col-md-6">
 
 
             <div class="tab_container">
                 <input id="tab1" type="radio" name="tabs" {{ old('tab') != 'register' ? 'checked' : '' }} class="radio_hidden">
-                <label for="tab1" class="head"><i class="fa fa-user"></i><span>LOGIN</span></label>
+                <label for="tab1" class="head head1"><i class="fa fa-user"></i><span>LOGIN</span></label>
 
                 <input id="tab2" type="radio" name="tabs" {{ old('tab') == 'register' ? 'checked' : '' }} class="radio_hidden">
-                <label for="tab2" class="head"><i class="fa fa-user-plus"></i><span>SIGN UP</span></label>
+                <label for="tab2" class="head head2"><i class="fa fa-user-plus"></i><span>SIGN UP</span></label>
 
                 <div class="contents">
                     <section id="content1" class="tab-content">
@@ -63,12 +63,12 @@
 
 
 
-        {{-- </div> --}}
+        </div>
 
     </div>
 
 
-    @include('widgets.footer')
+    {{-- @include('widgets.footer') --}}
 </div>
 
 
