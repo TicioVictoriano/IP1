@@ -16,11 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -29,29 +28,39 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
         $user = Auth::user();
 
         $wall = [
             'new_post_group_id' => 0
         ];
 
-
-
-
-
         return view('home', compact('user', 'wall'));
-
-
     }
 
+    public function welcome()
+    {
+        $top_users =  User::latest()
+                            ->limit(8)  
+                            ->get();
+
+        $top_posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'users.name', 'users.profile_path')
+            ->limit(9)
+            ->get();
+
+        return view('layouts.welcome', compact('top_users', 'top_posts'));
+    }
+
+    public function login_register()
+    {
+        return view('layouts.guest');
+    }
 
     public function search(Request $request){
 
-
         $s = $request->input('s');
         if (empty($s)) return redirect('/');
-
 
         $user = Auth::user();
 
@@ -76,10 +85,5 @@ class HomeController extends Controller
         $users = User::where('name', 'like', '%'.$s.'%')->orWhere('username', 'like', '%'.$s.'%')->orderBy('name', 'ASC')->get();
 
         return view('search', compact('users', 'posts', 'user', 'comment_count'));
-
     }
-
-
-
-
 }

@@ -11,12 +11,17 @@
 |
 */
 
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', function () {
-        return view('layouts.guest');
-    });
-});
+// Route::group(['middleware' => 'guest'], function () {
+//     Route::get('/', function () {
+//         return view('layouts.welcome');
+//     });
+// });welcome
 
+Route::get('/', 'HomeController@welcome');
+
+Route::get('/login_register', function () {
+        return view('layouts.guest');
+})->name('login_register');
 
 Auth::routes();
 
