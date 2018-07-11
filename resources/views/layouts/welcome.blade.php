@@ -32,7 +32,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+<<<<<<< HEAD
                 <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}" alt=""></a>
+=======
+                <a class="navbar-brand" href="#"><img style="width: 60px; margin-top: -11px;" src="{{ asset('images/logo.png') }}" alt=""></a>
+>>>>>>> 10534ec17f6134e7ddbecfc3f510a7d65035e1e5
             </div>
             <div id="navbar" class="navbar-collapse collapse">
 
@@ -201,8 +205,12 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div> -- exo, monterraw --}}
 
+=======
+        </div> -- exo, monterraw}}
+>>>>>>> 10534ec17f6134e7ddbecfc3f510a7d65035e1e5
     </div>
 
     <br> {{-- /*Container for the posts*/ --}}
