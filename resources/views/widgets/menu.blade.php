@@ -30,6 +30,14 @@
                 Contact
             </a>
         </li>
+        
+        <li class="list-group-item">
+            <a href="{{ url('/'.Auth::user()->username) }}" class="menu-address-book">
+                <i class="fa fa-eyes" style="color:#b074cc;"></i>
+                View My Profile
+            </a>
+        </li>
+        
         <li class="list-group-item">
             </a>
         </li>
