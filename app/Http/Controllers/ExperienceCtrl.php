@@ -25,13 +25,13 @@ class ExperienceCtrl extends Controller
     $user = Auth::user($id = null);
     $basics =Experience::where('user_id', '=', Auth::user()->id)->first();
       if ($basics == null ) {
-      $z = "Tell us about your experience";
+        $z = "Tell us about your experience";
       }
       else {
-      $ok = Experience::All();
-      foreach ($ok as $key => $t) {
-      $z = $t->experience;
-      }
+          $ok = Experience::All();
+          foreach ($ok as $key => $t) {
+          $z = $t->experience;
+            }
       }
 
       $show = false;
@@ -86,8 +86,7 @@ class ExperienceCtrl extends Controller
                                 DB::table('experiences')
                                     ->where('user_id','=', $decrypt_id)
                                       ->update([
-                                        'experience' => $about = $request->input('experience'),
-
+                                        'experience' => $request->input('experience'),
                                       ]);
                                       return back()->with('success','Updated successfully!');
 

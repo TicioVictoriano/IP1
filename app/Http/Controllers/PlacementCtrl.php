@@ -42,7 +42,7 @@ class PlacementCtrl extends Controller
           }
       }
 
-      return view('ui.placement', compact('user', 'show', 'id', 'text'));
+      return view('ui.placement', compact('user', 'show', 'id', 'z'));
     }
 
     /**
