@@ -11,6 +11,8 @@
         "barryvdh/laravel-ide-helper": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "laravelcollective/html": "^5.4.0",
+        "mews/purifier": "^2.1",
         "nesbot/carbon": "^1.22"
     },
     "require-dev": {

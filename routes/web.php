@@ -68,6 +68,18 @@ Route::post('/relative/request', 'RelativesController@relativeRequest');
 // Nearby
 Route::get('/nearby', 'NearbyController@index');
 
+//About me
+Route::get('/about-me', 'AboutMeCtrl@index');
+Route::resource('aboutMe', 'AboutMeCtrl');
+
+//Placement
+Route::get('/placement', 'PlacementCtrl@index');
+Route::resource('my-placement', 'PlacementCtrl');
+
+//Placement
+Route::get('/experience', 'ExperienceCtrl@index');
+Route::resource('my-experience', 'ExperienceCtrl');
+
 // Messages
 Route::get('/direct-messages', 'MessagesController@index');
 Route::get('/direct-messages/show/{id}', 'MessagesController@index');
@@ -93,4 +105,3 @@ Route::get('/{username}/following', 'ProfileController@following');
 Route::get('/{username}/followers', 'ProfileController@followers');
 Route::post('/{username}/save/hobbies', 'ProfileController@saveHobbies');
 Route::post('/{username}/save/relationship', 'ProfileController@saveRelationship');
-
