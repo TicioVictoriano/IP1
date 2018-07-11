@@ -76,9 +76,12 @@ Route::resource('aboutMe', 'AboutMeCtrl');
 Route::get('/placement', 'PlacementCtrl@index');
 Route::resource('my-placement', 'PlacementCtrl');
 
-//Placement
+//Experience
 Route::get('/experience', 'ExperienceCtrl@index');
 Route::resource('my-experience', 'ExperienceCtrl');
+//Experience
+Route::get('/contact', 'ContactCtrl@index');
+Route::resource('my-contact', 'ContactCtrl');
 
 // Messages
 Route::get('/direct-messages', 'MessagesController@index');

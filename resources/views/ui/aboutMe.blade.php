@@ -15,7 +15,7 @@
                 </div>
 
                     <div class="chat">
-                      
+
 
                       {!! Form::open(['action' => 'AboutMeCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'onsubmit'=> 'ShowLoading()']) !!}
                       {{ csrf_field() }}

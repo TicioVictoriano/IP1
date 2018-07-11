@@ -35,6 +35,11 @@ nav .navbar-brand{
 	margin-left: 25% !important;
 }
 
+nav .navbar-brand img{
+	width: 60px !important; 
+	margin-top: -11px !important;
+}
+
 #myCarousel{
 	text-align: center !important;
 }
