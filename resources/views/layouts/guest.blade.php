@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<div class="banner">
+{{-- <div class="banner">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -27,17 +27,17 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <a href="{{ url('/') }}" class="logo">
                 <img src="{{ asset('images/guest_logo.png') }}" alt="" />
             </a>
-        </div>
+        </div> --}}
 
-        <div class="col-md-6">
+        {{-- <div class="col-md-6"> --}}
 
 
             <div class="tab_container">
@@ -63,7 +63,7 @@
 
 
 
-        </div>
+        {{-- </div> --}}
 
     </div>
 
