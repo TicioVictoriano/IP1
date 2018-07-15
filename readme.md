@@ -1,19 +1,18 @@
 ## Laravel 5 - Integrated Project 1
 
 ### Installation
-* Clone the code in the master branch
-* php artisan key:generate to regenerate secure key
-* create new database and edit .env file for DB settings (The name of your database is the name that should written in the .env file)
+* Clone the code of the master branch
+* Create new database, name it "ip1" and edit .env file for DB settings (Your database name should be written in the .env file)
 * php artisan migrate —seed (To create the tables on the database).
 * edit .env file for APP configuration and Google API Configuration
-* storage, bootstrap/cache and public/cache directories should be writable
+* Storage, bootstrap/cache and public/cache directories should be writable
 * php artisan storage:link
 * php artisan serve (To run laravel server on your local machine)
 
-### Installation
-* Create your own branch where you will commit your changes to the code.
+### Branch
+* Create your own branch where you will commit the code the changes you have done.
 * Name your branch in a way that we can easily understand who as created that branch.
-* After evaluating the code we will altogueter merge the code in the branches into the master branch.
+* After evaluating the code we will merge the code of each one of our branches into the master branch.
 
 ### Include
 * Laravel 5.4 (https://laravel.com/docs/5.4)
