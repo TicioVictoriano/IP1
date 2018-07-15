@@ -1,22 +1,19 @@
-## Laravel 5 - Simple Location-Based Social Network 
-It's location-based social network developed by [lvntayn](https://github.com/lvntayn), [theoneremains](https://github.com/theoneremains) and [koniqwe](https://github.com/koniqwe) using the Laravel PHP framework.
-
-Live - https://around.kim
-
-Demo Pages - https://github.com/lvntayn/laravel-social-network/tree/master/public/images/demo
+## Laravel 5 - Integrated Project 1
 
 ### Installation
-* git clone https://github.com/lvntayn/laravel-social-network.git projectname
-* cd projectname
-* composer install
+* Clone the code in the master branch
 * php artisan key:generate to regenerate secure key
-* create new database and edit .env file for DB settings
-* php artisan migrate —seed
+* create new database and edit .env file for DB settings (The name of your database is the name that should written in the .env file)
+* php artisan migrate —seed (To create the tables on the database).
 * edit .env file for APP configuration and Google API Configuration
 * storage, bootstrap/cache and public/cache directories should be writable
 * php artisan storage:link
-* php artisan serve
+* php artisan serve (To run laravel server on your local machine)
 
+### Installation
+* Create your own branch where you will commit your changes to the code.
+* Name your branch in a way that we can easily understand who as created that branch.
+* After evaluating the code we will altogueter merge the code in the branches into the master branch.
 
 ### Include
 * Laravel 5.4 (https://laravel.com/docs/5.4)
@@ -57,14 +54,3 @@ There are 7 pages. which are Home Page for Login and Sign Up,  TimeLine, Direct 
 ### Requirements
 * PHP 5.6.4
 * MySQL
-
-
-### Authors
-**lvntayn**
-- https://github.com/lvntayn
-
-**theoneremains**
-- https://github.com/theoneremains
-
-**koniqwe**
-- https://github.com/koniqwe
