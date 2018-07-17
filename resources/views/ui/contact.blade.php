@@ -11,7 +11,7 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-address-book" style="color:#b074cc;"></i> Contact
+                    <i class="fa fa-address-book" style="color:#b074cc;"></i> Contact |<small> <a href="{{ url('/'.Auth::user()->username.'/contact') }}"><i class="fa fa-eye" style="color:red;"></i> View</a> </small>
                 </div>
 
                     <div class="chat">
