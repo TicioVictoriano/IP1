@@ -11,7 +11,7 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-user" style="color:pink;"></i> About Me
+                    <i class="fa fa-user" style="color:pink;"></i> About Me  |<small> <a href="{{ url('/'.Auth::user()->username.'/about-me') }}"><i class="fa fa-eye" style="color:red;"></i> View</a> </small>
                 </div>
 
                     <div class="chat">

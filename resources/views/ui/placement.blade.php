@@ -11,7 +11,7 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-building"></i> Placement
+                    <i class="fa fa-building"></i> Placement |<small> <a href="{{ url('/'.Auth::user()->username.'/placement') }}"><i class="fa fa-eye" style="color:red;"></i> View</a> </small>
                 </div>
 
                     <div class="chat">

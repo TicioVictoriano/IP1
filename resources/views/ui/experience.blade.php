@@ -11,12 +11,12 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-building"></i> Experience
+                    <i class="fa fa-building"></i> Experience |<small> <a href="{{ url('/'.Auth::user()->username.'/experience') }}"><i class="fa fa-eye" style="color:red;"></i> View</a> </small>
                 </div>
 
                     <div class="chat">
 
-                    
+
                       {!! Form::open(['action' => 'ExperienceCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'onsubmit'=> 'ShowLoading()']) !!}
                       {{ csrf_field() }}
 

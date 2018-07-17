@@ -96,6 +96,11 @@ Route::get('/save-my-location2', 'FindLocationController@save2');
 
 // Profile
 Route::get('/{username}', 'ProfileController@index');
+//
+Route::get('/{username}/about-me', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/placement', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/experience', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/contact', 'ProfileController@viewInputedInfo');
 Route::post('/{username}/upload/profile-photo', 'ProfileController@uploadProfilePhoto');
 Route::post('/{username}/upload/cover', 'ProfileController@uploadCover');
 Route::post('/{username}/save/information', 'ProfileController@saveInformation');

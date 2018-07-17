@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Country;
+use App\AboutMe;
 use App\Models\Hobby;
 use App\Models\User;
 use App\Models\UserHobby;
@@ -67,6 +68,20 @@ class ProfileController extends Controller
 
 
         return view('profile.index', compact('user', 'my_profile', 'wall', 'can_see', 'hobbies', 'relationship', 'relationship2'));
+    }
+    public function viewInputedInfo($username){
+
+        if (!$this->secure($username)) return redirect('/404');
+        $user = $this->user;
+
+        $usera = User::where('username', $username)->get();
+
+        $aboutMe = User::find($usera[0]->id)->aboutMe;
+        $placement = User::find($usera[0]->id)->placement;
+        $experience = User::find($usera[0]->id)->experience;
+        $contact = User::find($usera[0]->id)->contact;
+        return view('profile.view_inputs', compact('user', 'show', 'aboutMe', 'z', 'placement', 'contact', 'experience'));
+        //return view('profile.view_inputs', compact('aboutMe', ));
     }
 
     public function following(Request $request, $username){
