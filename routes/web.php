@@ -11,12 +11,22 @@
 |
 */
 
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', function () {
-        return view('layouts.guest');
-    });
-});
+// Route::group(['middleware' => 'guest'], function () {
+//     Route::get('/', function () {
+//         return view('layouts.welcome');
+//     });
+// });welcome
 
+Route::get('/', 'HomeController@welcome');
+
+
+Route::get('/contact_us', 'HomeController@contact_us')->name('contact_us');
+Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/intern_diary', 'HomeController@intern_diary')->name('intern_diary');
+
+Route::get('/login_register', function () {
+        return view('layouts.guest');
+})->name('login_register');
 
 Auth::routes();
 
@@ -26,7 +36,6 @@ Route::post('/settings', array(
     'as' => 'settings',
     'uses' => 'SettingsController@update'
 ));
-
 
 // Posts
 Route::get('/posts/list', 'PostsController@fetch');
@@ -58,7 +67,6 @@ Route::post('/follower/denied', 'FollowController@followDenied');
 Route::get('/relatives/pending', 'RelativesController@pending');
 Route::post('/relative/delete', 'RelativesController@delete');
 Route::post('/relative/request', 'RelativesController@relativeRequest');
-
 
 // Nearby
 Route::get('/nearby', 'NearbyController@index');

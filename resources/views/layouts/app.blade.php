@@ -44,9 +44,15 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="" />
-                </a>
+                @if(Auth::check())
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="" />
+                    </a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="" />
+                    </a>
+                @endif
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -71,7 +77,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    @include('widgets.notifications')
+                    {{-- @include('widgets.notifications') --}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle parent" data-toggle="dropdown" role="button" aria-expanded="false">
 

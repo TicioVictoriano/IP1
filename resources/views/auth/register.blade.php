@@ -1,9 +1,6 @@
 <form class="register" role="form" method="POST" action="{{ route('register') }}">
     <input type="hidden" value="register" name="tab" />
     {{ csrf_field() }}
-
-    <h2>Start Connecting Millions of People!</h2>
-
     <div class="row">
         <div class="form-group{{ old('tab') == 'register' && $errors->has('name') ? ' has-error' : '' }} col-md-12">
             <label for="name" class="control-label">Name</label>

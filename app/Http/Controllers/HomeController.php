@@ -12,15 +12,14 @@ use DB;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -29,29 +28,64 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
         $user = Auth::user();
 
         $wall = [
             'new_post_group_id' => 0
         ];
 
-
-
-
-
         return view('home', compact('user', 'wall'));
-
-
     }
 
+    public function welcome()
+    {
+        $top_users =  User::latest()
+                            ->limit(8)  
+                            ->get();
+
+        $top_posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'users.name', 'users.profile_path')
+            ->limit(9)
+            ->get();
+
+        return view('welcome', compact('top_users', 'top_posts'));
+    }
+
+    public function contact_us()
+    {
+        return view('contact_us');
+    }
+
+     public function about()
+    {
+        return view('about');
+    }
+
+    public function intern_diary()
+    {
+        // $posts = DB::table('posts')
+        //     ->join('users', 'posts.user_id', '=', 'users.id')
+        //     ->select('posts.*', 'users.*')
+        //     // ->limit(9)
+        //     ->get();
+
+        $posts = Post::Join('users', 'users.id', '=', 'posts.user_id')->paginate(6);
+
+        // dd($posts);
+
+        return view('intern-diary', compact('posts'));
+    }
+
+    public function login_register()
+    {
+        return view('layouts.guest');
+    }
 
     public function search(Request $request){
 
-
         $s = $request->input('s');
         if (empty($s)) return redirect('/');
-
 
         $user = Auth::user();
 
@@ -76,10 +110,5 @@ class HomeController extends Controller
         $users = User::where('name', 'like', '%'.$s.'%')->orWhere('username', 'like', '%'.$s.'%')->orderBy('name', 'ASC')->get();
 
         return view('search', compact('users', 'posts', 'user', 'comment_count'));
-
     }
-
-
-
-
 }

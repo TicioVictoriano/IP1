@@ -122,7 +122,7 @@ return [
 
     'log' => env('APP_LOG', 'single'),
 
-    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+    'log_level' => env('APP_LOG_LEVEL', 'false'),
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +183,7 @@ return [
          * 3rd Party Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
 
 

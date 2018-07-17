@@ -30,10 +30,15 @@
                 Contact
             </a>
         </li>
+        
         <li class="list-group-item">
-            <a href="{{ url('/'.Auth::user()->username) }}" class="menu-dm">
-                <i class="fa fa-eye"></i>
+            <a href="{{ url('/'.Auth::user()->username) }}" class="menu-address-book">
+                <i class="fa fa-eye" style="color:#E35D06;"></i>
                 View My Profile
+            </a>
+        </li>
+        
+        <li class="list-group-item">
             </a>
         </li>
     </ul>
