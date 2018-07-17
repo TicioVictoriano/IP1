@@ -33,7 +33,7 @@
         
         <li class="list-group-item">
             <a href="{{ url('/'.Auth::user()->username) }}" class="menu-address-book">
-                <i class="fa fa-eyes" style="color:#b074cc;"></i>
+                <i class="fa fa-eye" style="color:#E35D06;"></i>
                 View My Profile
             </a>
         </li>

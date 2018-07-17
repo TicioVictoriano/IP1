@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default">
         <div class="container">
@@ -37,9 +38,9 @@
             <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('intern_diary') }}">Intern-diary</a></li>
-                    <li><a href="{{ route('about') }}">About</a></li>
-                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a href="#myCarousel">Intern-diary</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
 
                     <li><a href="{{ route('login_register') }}">Login</a></li>
                     <li><a href="{{ route('login_register') }}">Register</a></li>

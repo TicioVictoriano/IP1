@@ -12,7 +12,7 @@ use DB;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -49,7 +49,32 @@ class HomeController extends Controller
             ->limit(9)
             ->get();
 
-        return view('layouts.welcome', compact('top_users', 'top_posts'));
+        return view('welcome', compact('top_users', 'top_posts'));
+    }
+
+    public function contact_us()
+    {
+        return view('contact_us');
+    }
+
+     public function about()
+    {
+        return view('about');
+    }
+
+    public function intern_diary()
+    {
+        // $posts = DB::table('posts')
+        //     ->join('users', 'posts.user_id', '=', 'users.id')
+        //     ->select('posts.*', 'users.*')
+        //     // ->limit(9)
+        //     ->get();
+
+        $posts = Post::Join('users', 'users.id', '=', 'posts.user_id')->paginate(6);
+
+        // dd($posts);
+
+        return view('intern-diary', compact('posts'));
     }
 
     public function login_register()
