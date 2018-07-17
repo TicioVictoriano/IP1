@@ -1,3 +1,13 @@
+Authors: Ticio, Kone, Andrew, Eli, Abel
+
+### Installation
+* git clone 
+* cd projectname
+* composer install
+* php artisan key:generate to regenerate secure key
+* create new database and edit .env file for DB settings
+* php artisan migrate —seed
+
 ## Laravel 5 - Integrated Project 1
 
 ### Installation
@@ -7,6 +17,7 @@
 * edit .env file for APP configuration and Google API Configuration
 * Storage, bootstrap/cache and public/cache directories should be writable
 * php artisan storage:link
+* php artisan serve
 * php artisan serve (To run laravel server on your local machine)
 
 ### Branch

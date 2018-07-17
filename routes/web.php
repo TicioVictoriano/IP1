@@ -63,6 +63,21 @@ Route::post('/relative/request', 'RelativesController@relativeRequest');
 // Nearby
 Route::get('/nearby', 'NearbyController@index');
 
+//About me
+Route::get('/about-me', 'AboutMeCtrl@index');
+Route::resource('aboutMe', 'AboutMeCtrl');
+
+//Placement
+Route::get('/placement', 'PlacementCtrl@index');
+Route::resource('my-placement', 'PlacementCtrl');
+
+//Experience
+Route::get('/experience', 'ExperienceCtrl@index');
+Route::resource('my-experience', 'ExperienceCtrl');
+//Experience
+Route::get('/contact', 'ContactCtrl@index');
+Route::resource('my-contact', 'ContactCtrl');
+
 // Messages
 Route::get('/direct-messages', 'MessagesController@index');
 Route::get('/direct-messages/show/{id}', 'MessagesController@index');
@@ -81,6 +96,11 @@ Route::get('/save-my-location2', 'FindLocationController@save2');
 
 // Profile
 Route::get('/{username}', 'ProfileController@index');
+//
+Route::get('/{username}/about-me', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/placement', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/experience', 'ProfileController@viewInputedInfo');
+Route::get('/{username}/contact', 'ProfileController@viewInputedInfo');
 Route::post('/{username}/upload/profile-photo', 'ProfileController@uploadProfilePhoto');
 Route::post('/{username}/upload/cover', 'ProfileController@uploadCover');
 Route::post('/{username}/save/information', 'ProfileController@saveInformation');
@@ -88,4 +108,3 @@ Route::get('/{username}/following', 'ProfileController@following');
 Route::get('/{username}/followers', 'ProfileController@followers');
 Route::post('/{username}/save/hobbies', 'ProfileController@saveHobbies');
 Route::post('/{username}/save/relationship', 'ProfileController@saveRelationship');
-
