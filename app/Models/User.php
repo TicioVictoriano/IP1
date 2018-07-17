@@ -37,6 +37,18 @@ class User extends Authenticatable
     public function location(){
         return $this->hasOne('App\Models\UserLocation', 'user_id', 'id');
     }
+    public function aboutMe(){
+        return $this->hasOne('App\AboutMe', 'user_id', 'id');
+    }
+    public function placement(){
+        return $this->hasOne('App\Placement', 'user_id', 'id');
+    }
+    public function experience(){
+        return $this->hasOne('App\Models\Experience', 'user_id', 'id');
+    }
+    public function contact(){
+        return $this->hasOne('App\Models\Contact', 'user_id', 'id');
+    }
 
     public function relatives(){
         return $this->hasMany('App\Models\UserRelationship', 'main_user_id', 'id');
