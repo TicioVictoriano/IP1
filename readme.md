@@ -11,11 +11,14 @@ Authors: Ticio, Kone, Andrew, Eli, Abel
 ## Laravel 5 - Integrated Project 1
 
 ### Installation
-* Clone the code of the master branch
-* Create new database, name it "ip1" and edit .env file for DB settings (Your database name should be written in the .env file)
-* php artisan migrate —seed (To create the tables on the database).
+* git clone 
+* cd projectname
+* composer install
+* php artisan key:generate to regenerate secure key
+* create new database and edit .env file for DB settings
+* php artisan migrate —seed
 * edit .env file for APP configuration and Google API Configuration
-* Storage, bootstrap/cache and public/cache directories should be writable
+* storage, bootstrap/cache and public/cache directories should be writable
 * php artisan storage:link
 * php artisan serve
 * php artisan serve (To run laravel server on your local machine)
