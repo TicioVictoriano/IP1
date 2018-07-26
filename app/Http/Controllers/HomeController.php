@@ -37,6 +37,25 @@ class HomeController extends Controller
         return view('home', compact('user', 'wall'));
     }
 
+    public function viewProfile(Request $request)
+    {
+        User::where('name', 'like', '%'.$name.'%')->orWhere('username', 'like', '%'.$name.'%')->orderBy('name', 'ASC')->get();
+
+        return view('home', compact('user'));
+    }
+
+    public function searchUser(Request $request)
+    {
+
+        $name = $request->input('query');
+        if (empty($name)) 
+            return redirect('/');
+
+        $result = User::where('name', 'like', '%'.$name.'%')->orWhere('username', 'like', '%'.$name.'%')->orderBy('name', 'ASC')->get();
+
+        return view('search', compact('result'));
+    }
+
     public function welcome()
     {
         $top_users =  User::latest()
@@ -45,9 +64,10 @@ class HomeController extends Controller
 
         $top_posts = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('posts.*', 'users.name', 'users.profile_path')
+            ->select('posts.*', 'users.*', 'users.profile_path')
             ->limit(9)
             ->get();
+
 
         return view('welcome', compact('top_users', 'top_posts'));
     }
@@ -70,9 +90,13 @@ class HomeController extends Controller
         //     // ->limit(9)
         //     ->get();
 
-        $posts = Post::Join('users', 'users.id', '=', 'posts.user_id')->paginate(6);
+        // $posts = Post::Join('users', 'users.id', '=', 'posts.user_id')->paginate(6);
 
         // dd($posts);
+
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(6);
+
+        // dd($posts[0]->user->username);
 
         return view('intern-diary', compact('posts'));
     }

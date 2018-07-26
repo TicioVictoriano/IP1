@@ -1,109 +1,110 @@
 @extends('layouts.guest-app') 
 
 @section('local-css')
+  
     /* Post List */
 
-nav
-{
-    background-image: -webkit-linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url(../images/slider.png) !important;
-    background-size: cover !important;
-    background-position: center !important;
-}
+    nav
+    {
+        background-image: -webkit-linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url(../images/slider.png) !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
 
-.post-content{
-    height: 222px;
-}
+    .post-content{
+        height: 222px;
+    }
 
-.post-content img{
-    width: 100%;
-    height: 90%;
-}
+    .post-content img{
+        width: 100%;
+        height: 90%;
+    }
 
-.panel-body{
-    height: 87.1%;
-}
+    .panel-body{
+        height: 87.1%;
+    }
 
-.panel-default {
-    height: 400px !important;
-}
+    .panel-default {
+        height: 400px !important;
+    }
 
-.panel-post .post-profile-photo {
-    width: 50px;
-    height: 50px;
-}
+    .panel-post .post-profile-photo {
+        width: 50px;
+        height: 50px;
+    }
 
-.panel-post .info {
-    padding: 0;
-    margin-left: 10px;
-}
+    .panel-post .info {
+        padding: 0;
+        margin-left: 10px;
+    }
 
-.panel-post .info a {
-    display: block;
-}
+    .panel-post .info a {
+        display: block;
+    }
 
-.panel-post .info a.name {
-    color: #454545;
-    font-weight: bold;
-    font-size: 15px;
-}
+    .panel-post .info a.name {
+        color: #454545;
+        font-weight: bold;
+        font-size: 15px;
+    }
 
-.panel-post .info a.username {
-    color: #757575;
-    font-size: 13px;
-}
+    .panel-post .info a.username {
+        color: #757575;
+        font-size: 13px;
+    }
 
-.panel-post .info a.date {
-    color: #929292;
-    font-style: italic;
-    font-size: 12px;
-}
-
-
-.panel-post .info a.date:hover {
-    text-decoration: underline;
-}
-
-.panel-post .like-box {
-    color: #454545;
-    font-size: 12px;
-}
-
-.panel-post .like-box a {
-    color: #454545;
-    display: block;
-    text-align: center;
-}
+    .panel-post .info a.date {
+        color: #929292;
+        font-style: italic;
+        font-size: 12px;
+    }
 
 
-.panel-post .like-box a.all_likes:hover {
-    text-decoration: underline;
-}
+    .panel-post .info a.date:hover {
+        text-decoration: underline;
+    }
 
-.panel-post .like-box a:first-child:hover {
-    color: #d63737;
-}
+    .panel-post .like-box {
+        color: #454545;
+        font-size: 12px;
+    }
 
-.panel-post .like-box a:last-child {
-    margin-top: 5px;
-    font-style: italic;
-    font-size: 11px;
-}
+    .panel-post .like-box a {
+        color: #454545;
+        display: block;
+        text-align: center;
+    }
 
-.panel-post .like-box i {
-    color: #d63737;
-    font-size: 19px;
-    float: left;
-    margin-right: 6px;
-}
 
-.panel-post .post-image {
-    margin: 0 auto;
-}
+    .panel-post .like-box a.all_likes:hover {
+        text-decoration: underline;
+    }
 
-.panel-post .fix-hr {
-    margin-left: -15px;
-    width: calc(100% + 30px)
-}
+    .panel-post .like-box a:first-child:hover {
+        color: #d63737;
+    }
+
+    .panel-post .like-box a:last-child {
+        margin-top: 5px;
+        font-style: italic;
+        font-size: 11px;
+    }
+
+    .panel-post .like-box i {
+        color: #d63737;
+        font-size: 19px;
+        float: left;
+        margin-right: 6px;
+    }
+
+    .panel-post .post-image {
+        margin: 0 auto;
+    }
+
+    .panel-post .fix-hr {
+        margin-left: -15px;
+        width: calc(100% + 30px)
+    }
 @endsection
 
 @section('links-css')
@@ -148,7 +149,7 @@ nav
                             <hr class="fix-hr">
                         </div>
                         <div class="panel-footer">
-                            <a href="" class="btn btn-info btn-sm">See more</a>
+                            <a href="{{ url('/'.$post->user->username)}}#panel-post-{{ $post->id }}" class="btn btn-info btn-sm">See more</a>
                         </div>
                     </div>            
                 </div>

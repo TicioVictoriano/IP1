@@ -25,10 +25,10 @@ class ProfileController extends Controller
     private $my_profile = false;
 
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
     public function secure($username, $is_owner = false){
@@ -45,30 +45,51 @@ class ProfileController extends Controller
         return false;
     }
 
+
     public function index($username){
 
         if (!$this->secure($username)) return redirect('/404');
 
         $user = $this->user;
 
-
         $my_profile = $this->my_profile;
 
 
-        $wall = [
-            'new_post_group_id' => 0
-        ];
+        if(Auth::check())
+        {
+            $wall = [
+              'new_post_group_id' => 0
+            ];
 
-        $can_see = ($my_profile)?true:$user->canSeeProfile(Auth::id());
+            $can_see = ($my_profile)?true:$user->canSeeProfile(Auth::id());
+        }    
+        else
+        {
 
+            $can_see = true;
+        }   
 
+        $posts = User::find($user->id)->posts;
+        
         $hobbies = Hobby::all();
         $relationship = $user->relatives()->with('relative')->where('allow', 1)->get();
         $relationship2 = $user->relatives2()->with('main')->where('allow', 1)->get();
 
 
-        return view('profile.index', compact('user', 'my_profile', 'wall', 'can_see', 'hobbies', 'relationship', 'relationship2'));
+        $comment_count = 2;
+
+
+
+
+        if(Auth::check())
+            return view('profile.index', compact('user', 'my_profile', 'wall', 'can_see', 'hobbies', 'relationship', 'relationship2'));
+        
+        $users = User::paginate(6);
+
+        return view('profile.index', compact('user', 'users', 'my_profile', 'comment_count','posts', 'can_see', 'hobbies', 'relationship', 'relationship2'));
     }
+
+
     public function viewInputedInfo($username){
 
         if (!$this->secure($username)) return redirect('/404');
@@ -83,6 +104,7 @@ class ProfileController extends Controller
         return view('profile.view_inputs', compact('user', 'show', 'aboutMe', 'z', 'placement', 'contact', 'experience'));
         //return view('profile.view_inputs', compact('aboutMe', ));
     }
+
 
     public function following(Request $request, $username){
 
@@ -118,6 +140,7 @@ class ProfileController extends Controller
 
 
     public function saveInformation(Request $request, $username){
+
         $response = array();
         $response['code'] = 400;
         if (!$this->secure($username, true)) return Response::json($response);

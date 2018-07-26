@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ase@extends('layouts.app')
 
 @section('content')
     <div class="h-20"></div>

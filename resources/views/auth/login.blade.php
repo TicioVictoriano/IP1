@@ -9,8 +9,8 @@
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-envelope"></i> </span>
                 <input id="email" type="email" class="form-control" placeholder="email@example.com" name="email" value="{{ old('email') }}" required>
-
             </div>
+            
             @if (old('tab') != 'register' && $errors->has('email'))
                 <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -66,7 +66,6 @@
             <span>or</span>
         </div>
 
-
         <div >
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary btn-facebook">
@@ -80,8 +79,5 @@
                 </button>
             </div>
         </div>
-
-
-
     </div>
 </form>

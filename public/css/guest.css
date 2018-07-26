@@ -64,17 +64,14 @@ input:-webkit-autofill:active {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    background: #E35D06;
+    /*background: #E35D06;*/
 }
 
-.tab_container .head1 {
+
+.tab_container .head{
+    
+    background: rgba(11, 75, 134, 0.8);
     color: #fff;
-    background: #E35D06;
-}
-
-.tab_container .head2 {
-    color: #E35D06;
-    background: #fff;
 }
 
 .tab_container label{
@@ -99,7 +96,8 @@ input:-webkit-autofill:active {
 
 
 .tab_container [id^="tab"]:checked + .head, .tab_container .head:hover {
-    background: rgba(11, 75, 134, 0.8);
+    color: #E35D06;
+    background: #fff;
 }
 
 

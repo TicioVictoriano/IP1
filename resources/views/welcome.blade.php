@@ -1,6 +1,12 @@
 @extends('layouts.guest-app')
+
+@section('links-css')
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+@endsection
     
 @section('carousel')
+    
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -28,10 +34,12 @@
             <h2>Welcome to ALU student internship portfolio</h2>
             <br>
             <div id="search-bar">
-                <form class="form-inline" action="" method="post" accept-charset="utf-8">
+                <form class="form-inline" action="{{ route('searchUser') }}" method="post" accept-charset="utf-8">
                     
+                    {!! csrf_field() !!}
+
                     <div class="form-group search">
-                        <input type="text" class="form-control" name="" placeholder="Search for a student">
+                        <input type="text" class="typeahead form-control" name="query" placeholder="Search for a student">
                     </div>
 
                     <div class="form-group search-btn">
@@ -39,6 +47,21 @@
                             <span class="glyphicon glyphicon-search"></span>
                         </button>        
                     </div>
+                    
+
+                    <script type="text/javascript">
+
+                        var path = "{{ route('autocomplete') }}";
+
+                        $('input.typeahead').typeahead({
+                            source: function(query, process){
+                                return $.get(path, { query: query }, function(data){
+                                    return process(data);
+                                })
+                            }
+                        });
+
+                    </script>
 
                 </form>
             </div>
@@ -60,20 +83,23 @@
                 @foreach ($top_users->chunk(4) as $users)
                     <div class="row">
                             @foreach ($users as $user)
-                                <div class="col-sm-2 col-md-3">
-                                    
-                                    <div class="thumbnail">
-                                        <div class="back-image0">
-                                            <img src="{{Storage::url($user->profile_path)}}" class="img-responsive" alt=""/>
-                                        </div>
-                                        <div>
-                                            <a id="cart" class=" btn" role="button">
-                                            <span class="glyphicon glyphicon-user" aria-hidden="true">
-                                            </span> {{ $user->name }}
-                                          </a>
+
+                                @if($user->name != "guest")
+                                    <div class="col-sm-2 col-md-3">
+                                        
+                                        <div class="thumbnail">
+                                            <div class="back-image0">
+                                                <img src="{{Storage::url($user->profile_path)}}" class="img-responsive" alt=""/>
+                                            </div>
+                                            <div>
+                                                <a id="cart" class=" btn" role="button" href="{{ url('/'.$user->username)}}">
+                                                <span class="glyphicon glyphicon-user" aria-hidden="true">
+                                                </span> {{ $user->name }}
+                                              </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach        
                     </div>
                 @endforeach
@@ -118,9 +144,9 @@
                                 </span>
 
                             </div>
-
+{{--  --}}
                             <div class="panel-body">
-                                <a href="" class="btn btn-sm btn-primary">Read more</a>
+                                <a href="{{ url('/'.$post->username)}}#panel-post-{{$post->id}} "  class="btn btn-sm btn-primary">Read more</a>
                             </div>
                             <!-- /panel-body -->
 

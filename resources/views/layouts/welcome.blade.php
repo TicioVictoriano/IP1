@@ -80,7 +80,7 @@
                 <form class="form-inline" action="" method="post" accept-charset="utf-8">
                     
                     <div class="form-group search">
-                        <input type="text" class="form-control" name="" placeholder="Search for a student">
+                        <input type="text" class="form-control" name="" autocomplete="off" placeholder="Search for a student">
                     </div>
 
                     <div class="form-group search-btn">

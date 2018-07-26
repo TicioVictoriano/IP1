@@ -3,7 +3,9 @@
         @if($post->getCommentCount() > 0)
             @if($post->getCommentCount() > 1){{ $post->getCommentCount().' comments' }}@else{{ $post->getCommentCount().' comment' }}@endif
         @else
-            No Comments! Write a comment
+        	@if(Auth::check())
+            	No Comments! Write a comment
+        	@endif
         @endif
     </small>
 </p>

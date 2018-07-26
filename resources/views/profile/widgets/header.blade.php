@@ -28,7 +28,7 @@
                         <h2>{{ $user->name }}</h2>
                         <h4>{{ '@'.$user->username }}</h4>
                         @if($can_see)
-                            <small>{{ Auth::user()->distance($user) }}</small>
+                            {{-- <small>{{ Auth::user()->distance($user) }}</small> --}}
                         @endif
                     </div>
                     @if($my_profile)
@@ -39,14 +39,16 @@
                             </div>
                         </form>
                     @else
-                        <div class="profile-follow">
-                            <div class="profile-follow-b1 pull-left" style="margin-right: 10px">
-                                {!! sHelper::followButton($user->id, Auth::id(), '.profile-follow-b1') !!}
+                        @if(Auth::check())
+                            <div class="profile-follow">
+                                <div class="profile-follow-b1 pull-left" style="margin-right: 10px">
+                                    {!! sHelper::followButton($user->id, Auth::id(), '.profile-follow-b1') !!}
+                                </div>
+                                <div class="profile-follow-b2 pull-right">
+                                    {!! sHelper::deniedButton(Auth::id(), $user->id, '.denied-button-'.$user->id, 'denied-button-'.$user->id) !!}
+                                </div>
                             </div>
-                            <div class="profile-follow-b2 pull-right">
-                                {!! sHelper::deniedButton(Auth::id(), $user->id, '.denied-button-'.$user->id, 'denied-button-'.$user->id) !!}
-                            </div>
-                        </div>
+                        @endif
                     @endif
                 </div>
             </div>

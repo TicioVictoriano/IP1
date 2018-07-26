@@ -41,7 +41,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                  <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png') }}" alt=""></a>
+                  <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a>
               </div>
 
               <div id="navbar" class="navbar-collapse collapse">
@@ -50,7 +50,6 @@
 
                       <li><a href="{{ url('intern_diary') }}">Intern-diary</a></li>
                       <li><a href="{{ url('about') }}">About</a></li>
-                      <li><a href="{{ url('contact_us') }}">Contact</a></li>
                       <li><a href="{{ route('login_register') }}">Login</a></li>
                       <li><a href="{{ route('login_register') }}">Register</a></li>
                       

@@ -20,10 +20,10 @@ use View;
 class PostsController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
 
     public function fetch(Request $request){
@@ -175,15 +175,19 @@ class PostsController extends Controller
 
     public function comment(Request $request){
 
-        $user = Auth::user();
+
+        if(Auth::check())
+            $user = Auth::user();
+        else
+            $user = User::find(1);
+
+        // return "$user";
 
         $response = array();
         $response['code'] = 400;
 
         $post = Post::find($request->input('id'));
         $text = $request->input('comment');
-
-
 
         if ($post && !empty($text)){
 

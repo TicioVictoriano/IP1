@@ -15,8 +15,13 @@
       <link href="{{asset('js/summernote/dist/summernote.css')}}" rel="stylesheet">
       <script type="text/javascript" src="{{ asset('ui/processing.js') }}"></script>
   		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
+    {{-- This is for AJAX --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
     <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/pace-master/themes/white/pace-theme-flash.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/fancybox/dist/jquery.fancybox.min.css') }}" rel="stylesheet">
@@ -61,7 +66,7 @@
                     &nbsp;
                 </ul>
 
-                <div class="navbar-form navbar-left">
+               {{--  <div class="navbar-form navbar-left">
                     <form id="custom-search-input" method="get" action="{{ url('/search') }}">
                         <div class="input-group col-md-12">
                             <input type="text" class="form-control input-lg" name="s" placeholder="search..." />
@@ -72,7 +77,7 @@
                             </span>
                         </div>
                     </form>
-                </div>
+                </div> --}}
 
 
                 <!-- Right Side Of Navbar -->
@@ -81,32 +86,42 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle parent" data-toggle="dropdown" role="button" aria-expanded="false">
 
-                            <img src="{{ Auth::user()->getPhoto() }}" alt="" />
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            @if(Auth::check())
+                                <img src="{{ Auth::user()->getPhoto() }}" alt="" />
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            @else
+
+                            @endif
+
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/'.Auth::user()->username) }}">
-                                    <i class="fa fa-user"></i> My Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/settings') }}">
-                                    <i class="fa fa-cog"></i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out"></i> Logout
-                                </a>
+        
+                             @if(Auth::check())
+                                <li>
+                                    <a href="{{ url('/'.Auth::user()->username) }}">
+                                        <i class="fa fa-user"></i> My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/settings') }}">
+                                        <i class="fa fa-cog"></i> Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out"></i> Logout
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @else
+                                
+                            @endif
                         </ul>
                     </li>
                 </ul>
@@ -148,10 +163,12 @@
 <script src="{{ asset('js/notifications.js') }}"></script>
 @yield('footer')
 <script type="text/javascript">
-    @if(!Auth::user()->has('location'))
+    @if(Auth::check())
+        @if(!Auth::user()->has('location'))
 
-            autoFindLocation();
+                autoFindLocation();
 
+        @endif
     @endif
 </script>
 <script src="{{asset('js/summernote/dist/summernote.min.js')}}"></script>

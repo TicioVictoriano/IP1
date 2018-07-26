@@ -15,10 +15,13 @@
 //     Route::get('/', function () {
 //         return view('layouts.welcome');
 //     });
-// });welcome
+// });
 
-Route::get('/', 'HomeController@welcome');
+Route::get('autocomplete', array('as' => 'autocomplete', 'uses' => 'SearchController@autocomplete'));
 
+Route::get('/', 'HomeController@welcome')->name('welcome');
+
+Route::post('searchUser', 'HomeController@searchUser')->name('searchUser');
 
 Route::get('/contact_us', 'HomeController@contact_us')->name('contact_us');
 Route::get('/about', 'HomeController@about')->name('about');
